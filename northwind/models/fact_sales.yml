@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: Sales order fact table, summarizing sales data at the order line level.
+    columns:
+      - name: saleskey
+        description: Unique identifier for each sales record
+        tests:
+            - unique
+            - not_null
+      - name: employeeid
+        description: foreign key to dim_employee
+      - name: customerid
+        description: foreign key to dim_customer
+      - name: orderdate
+        description: date of the order
+      - name: productid
+        description: foreign key to dim_product
+      - name: orderid
+        description: natural key of the order
+      - name: quantity
+        description: quantity of the product ordered
+      - name: extendedpriceamount
+        description: extended price of the products
+      - name: discountamount
+        description: discount amount on the products
+      - name: soldamount
+        description: total amount sold after discount

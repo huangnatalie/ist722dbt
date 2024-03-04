@@ -6,11 +6,11 @@ sources:
     schema: conformed
 
     tables:
-    - name: DateDimension
-      columns:
-      - name: DateKey
-        tests:
-          - unique
+      - name: DateDimension
+        columns:
+          - name: DateKey
+            tests:
+              - unique
 
   - name: northwind
     database: raw
@@ -52,10 +52,9 @@ sources:
           - name: OrderId
             tests:
               - unique
-      -name: Order_Details
+      - name: Order_Details
         tests:
-        - dbt_utils_unique_combination_of_columns:
+         - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - OrderID
-              - ProductID
-
+              - OrderId
+              - ProductId
