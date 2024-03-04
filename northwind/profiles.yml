@@ -1,0 +1,13 @@
+northwind:
+  target: dev
+  outputs:
+    dev:
+      account: eua41432.east-us-2.azure
+      database: northwind
+      password: Nhua2622!
+      role: accountadmin
+      schema: northwind
+      threads: 4
+      type: snowflake
+      user: nhuangsyr
+      warehouse: COMPUTE_WH
