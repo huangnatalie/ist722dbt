@@ -7,16 +7,17 @@
         (with stg_sales as 
 (
     select
-        OrderID,
+        saleskey,
         md5(cast(coalesce(cast(employeeid as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as employeeid,
         md5(cast(coalesce(cast(customerid as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as customerid,
         md5(cast(coalesce(cast(productid as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as productid,
         replace(to_date(OrderDate)::varchar, '-', '')::int as orderdate,
+        orderid,
         quantity,
         UnitPrice as extendedpriceamount,
         Discount * UnitPrice * Quantity as discountamount,
         (UnitPrice * Quantity) - (Discount * UnitPrice * Quantity) as soldamount
-    from raw.northwind.Orders
+    from raw.northwind.Order_Details
 ),
 stg_products as
 (

@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: obt_sales
+    description: The order sales fact table. Transaction fact table with one row per order item ordered.

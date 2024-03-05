@@ -1,16 +1,17 @@
 with stg_sales as 
 (
     select
-        OrderID,
+        saleskey,
         {{ dbt_utils.generate_surrogate_key(['employeeid']) }} as employeeid,
         {{ dbt_utils.generate_surrogate_key(['customerid']) }} as customerid,
         {{ dbt_utils.generate_surrogate_key(['productid']) }} as productid,
         replace(to_date(OrderDate)::varchar, '-', '')::int as orderdate,
+        orderid,
         quantity,
         UnitPrice as extendedpriceamount,
         Discount * UnitPrice * Quantity as discountamount,
         (UnitPrice * Quantity) - (Discount * UnitPrice * Quantity) as soldamount
-    from {{ source('northwind','Orders')}}
+    from {{ source('northwind','Order_Details')}}
 ),
 stg_products as
 (

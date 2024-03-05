@@ -1,14 +1,14 @@
-with f_sales as (
-    select * from {{ ref('fact_sales') }}
+with f_order_sales as (
+    select * from analytics.northwind_northwind.fact_order_fulfillment
 ),
 d_customer as (
-    select * from {{ ref('dim_customer') }}
+    select * from analytics.northwind_northwind.dim_customer
 ),
 d_employee as (
-    select * from {{ ref('dim_employee') }}
+    select * from analytics.northwind_northwind.dim_employee
 ),
 d_date as (
-    select * from {{ ref('dim_date') }}
+    select * from analytics.northwind_northwind.dim_date
 )
 select 
     d_customer.*, 
